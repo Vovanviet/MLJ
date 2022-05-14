@@ -88,29 +88,48 @@ public class WeatherApi
 //        weatherApi.writeToDB();
 
         /*Get data WeatherRoot from DB*/
-//        WeatherRootDao weatherRootDao=new WeatherRootDao();
-//        List<WeatherRoot2> weatherRoot= weatherRootDao.getWeatherFromDB();
+        WeatherRootDao weatherRootDao=new WeatherRootDao();
+        List<WeatherRoot2> weatherRoot= weatherRootDao.getWeatherFromDB();
 //        System.out.println(weatherRootDao.getWeatherFromDB().get(0));
 
         /*Get data Clouds from DB*/
-//            CloudsDao cloudsDao=new CloudsDao();
-//        System.out.println(cloudsDao.getWeatherFromDB());
+            CloudsDao cloudsDao=new CloudsDao();
+        List<Clouds> cloudsList=cloudsDao.getWeatherFromDB();
+
+////        /*Get data Clouds from DB*/
+            MainDao mainDao=new MainDao();
+            List<Main>mainList=mainDao.getWeatherFromDB();
+//        System.out.println(mainList.get(mainList.size()-1));
 
         /*Get data Weather from DB*/
             WeatherDao weatherDao=new WeatherDao();
-            System.out.println(weatherDao.getWeatherFromDB());
+            List<Weather> weatherList=weatherDao.getWeatherFromDB();
 
         /*Get data Coord from DB*/
-//        CoordDao coordDao=new CoordDao();
-//        System.out.println(coordDao.getWeatherFromDB());
+        CoordDao coordDao=new CoordDao();
+        List<Coord> coordList=coordDao.getWeatherFromDB();
 
         /*Get data Wind from DB*/
-//        WindDao windDao =new WindDao();
-//        System.out.println(windDao.getWeatherFromDB());
+        WindDao windDao =new WindDao();
+        List<Wind> winds=windDao.getWeatherFromDB();
 
         /*Get data Sys from DB*/
-//        SysDao sysDao=new SysDao();
-//        System.out.println(sysDao.getWeatherFromDB());
+        SysDao sysDao=new SysDao();
+        List<Sys> sysList=sysDao.getWeatherFromDB();
+
+
+        System.out.println("Coord:"+coordList.get(coordList.size()-1)+"\nWeather:"+weatherList.get(weatherList.size()-1)+
+                "\nBase:"+weatherRoot.get(weatherRoot.size()-1).getBase()+
+                "\nMain:"+mainList.get(mainList.size()-1)+"\nVisiblity:"+
+                weatherRoot.get(weatherRoot.size()-1).getVisiblity()+"\nWind:"+
+                winds.get(winds.size()-1)+"\nClouds:"+cloudsList.get(cloudsList.size()-1)+
+                "\ndt:"+weatherRoot.get(weatherRoot.size()-1).getDt()+"\nSys:"+
+                sysList.get(sysList.size()-1)+"\nTimezone:"+
+                weatherRoot.get(weatherRoot.size()-1).getTimezone()+"\nid:"+
+                weatherRoot.get(weatherRoot.size()-1).getId()+"\nname:"+
+                weatherRoot.get(weatherRoot.size()-1).getName()+"\ncod"+
+                weatherRoot.get(weatherRoot.size()-1).getCod()+"\ndate:"+
+                weatherRoot.get(weatherRoot.size()-1).getDateTime());
     }
 }
 
